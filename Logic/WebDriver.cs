@@ -17,7 +17,7 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 
         public override void Start()
         {
-            _webDriver = new ChromeDriver();
+            _webDriver = new ChromeDriver(Environment.CurrentDirectory);
             _webDriverWait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(30));
         }   
 
