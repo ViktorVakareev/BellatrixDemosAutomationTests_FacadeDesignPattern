@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 {
-    public partial class CheckoutPage
+    public partial class CheckoutPage : BasePage
     {
+        public CheckoutPage(Driver driver) : base(driver)
+        {
+        }
+        protected override string Url => "https://demos.bellatrix.solutions/checkout/";
+
+        protected override void WaitForPageLoad()
+        {
+            //TODO
+        }
     }
 }
