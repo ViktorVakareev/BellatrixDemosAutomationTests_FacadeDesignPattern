@@ -15,6 +15,14 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 
         protected override string Url => "https://demos.bellatrix.solutions/";
 
+        public void AddRocketToShoppingCart(string rocketName)
+        {
+            Open();
+            GetProductBoxByName(rocketName).Click();
+            _driver.WaitForAjax();
+            Elements.ViewCartButton.Click();
+        }
+
         protected override void WaitForPageLoad()
         {
             //TODO

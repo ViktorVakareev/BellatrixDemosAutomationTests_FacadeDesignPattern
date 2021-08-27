@@ -20,7 +20,7 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
         public void StartUp()
         {
 
-            //_driver = new DriverImpl(new WebDriver());            
+            _driver = new DriverImpl(new WebDriver());            
             _mainPage = new MainPage(_driver);
             _cartPage = new CartPage(_driver);
             _checkoutPage = new CheckoutPage(_driver);

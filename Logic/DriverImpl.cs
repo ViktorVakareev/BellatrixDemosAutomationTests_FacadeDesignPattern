@@ -7,46 +7,46 @@ using System.Threading.Tasks;
 
 namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 {
-    public class DriverImpl : Driver
+    public class DriverImpl : DriverDecorator
     {
-        public DriverImpl(Driver driver)
-            :base(driver)
+        public DriverImpl(Driver driver) 
+            : base(driver)
         {
         }
 
         public override Element FindElement(By locator)
         {
-            throw new NotImplementedException();
+            return base.FindElement(locator);
         }
 
         public override List<Element> FindElements(By locator)
         {
-            throw new NotImplementedException();
+            return base.FindElements(locator);
         }
 
         public override void GoToUrl(string url)
         {
-            throw new NotImplementedException();
+            base.GoToUrl(url);
         }
 
         public override void Quit()
         {
-            throw new NotImplementedException();
+            base.Quit();
         }
 
         public override void Start()
         {
-            throw new NotImplementedException();
+            base.Start();
         }
 
         public override void WaitForAjax()
         {
-            throw new NotImplementedException();
+            base.WaitForAjax();
         }
 
         public override void WaitUntilPageLoadsCompletely()
         {
-            throw new NotImplementedException();
+            base.WaitUntilPageLoadsCompletely();
         }
     }
 }
