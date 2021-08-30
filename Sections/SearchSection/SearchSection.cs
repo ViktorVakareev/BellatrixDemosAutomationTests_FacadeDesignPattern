@@ -38,7 +38,7 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
             string actualSearchPageHeading = SearchPageHeading.Text.Substring(0, 15);
             string actualSearchResult = SearchPageTopResult.Text;
 
-            Assert.AreEqual("Search result", actualSearchPageHeading);
+            Assert.AreEqual("Search results:", actualSearchPageHeading);
             Assert.AreEqual(searchedRocketName, actualSearchResult);
         }
 
@@ -47,7 +47,7 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
             string actualSearchPageHeading = SearchPageHeading.Text.Substring(0, 15);
             string actualSearchResult = SearchPageNoProductsErrorMessage.Text;
 
-            Assert.AreEqual("Search result", actualSearchPageHeading);
+            Assert.AreEqual("Search results:", actualSearchPageHeading);
             Assert.AreEqual("No products were found matching your selection.", actualSearchResult);
         }
     }

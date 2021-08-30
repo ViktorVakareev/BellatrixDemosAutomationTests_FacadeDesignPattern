@@ -52,10 +52,10 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
         [Test]
         public void CorrectProductShownOnSearchResultsPage_WhenUsingSearchForExistingProduct()
         {
-            string searchName = "Falcon 9";            
+            string searchName = "Falcon 9";
 
-            _mainPage.Open();           
-            _searchSection.SearchForItem(searchName);            
+            _mainPage.Open();
+            _searchSection.SearchForItem(searchName);
 
             _searchSection.AssertCorrectSearchResult(searchName);
         }
@@ -63,7 +63,7 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
         [Test]
         public void NoProductMessageOnSearchResultsPage_WhenUsingSearchForNonExistingProduct()
         {
-            string searchName = "Falco 10";
+            string searchName = "Galco 10";
 
             _mainPage.Open();
             _searchSection.SearchForItem(searchName);

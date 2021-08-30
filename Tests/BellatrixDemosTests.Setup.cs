@@ -18,12 +18,13 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
         private CartPage _cartPage;
         private CheckoutPage _checkoutPage;
         private SearchSection _searchSection;
+        private MainMenuSection _mainMenuSection;
+        private CartInfoSection _cartInfoSection;  
         private Facade _facade;        
 
         [SetUp]
         public void StartUp()
         {
-
             new WebDriverManager.DriverManager().SetUpDriver(new ChromeConfig());
             _driver = new ChromeDriver();
             _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(25);
@@ -32,6 +33,8 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
             _cartPage = new CartPage(_driver);
             _checkoutPage = new CheckoutPage(_driver);
             _searchSection = new SearchSection(_driver);
+            _mainMenuSection = new MainMenuSection(_driver);
+            _cartInfoSection = new CartInfoSection(_driver);
             _facade = new Facade(_mainPage, _cartPage, _checkoutPage);
         }
 
