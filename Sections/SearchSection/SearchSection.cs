@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,12 +25,30 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 
         private IWebElement SearchPageNoProductsErrorMessage => _driver.FindElement(By.XPath("//p[@class='woocommerce-info']"));
 
-        private IWebElement SearchPageFirstResult => _driver.FindElement(By.XPath("(//h2)[1]"));
+        private IWebElement SearchPageTopResult => _driver.FindElement(By.XPath("(//h2)[1]"));
 
         public void SearchForItem(string searchText)
         {
             _helperMethods.EnterText(searchText, SearchField);
             SearchField.SendKeys(Keys.Enter);
+        }
+
+        public void AssertCorrectSearchResult(string searchedRocketName)
+        {
+            string actualSearchPageHeading = SearchPageHeading.Text.Substring(0, 15);
+            string actualSearchResult = SearchPageTopResult.Text;
+
+            Assert.AreEqual("Search result", actualSearchPageHeading);
+            Assert.AreEqual(searchedRocketName, actualSearchResult);
+        }
+
+        public void AssertWrongSearchResult()
+        {
+            string actualSearchPageHeading = SearchPageHeading.Text.Substring(0, 15);
+            string actualSearchResult = SearchPageNoProductsErrorMessage.Text;
+
+            Assert.AreEqual("Search result", actualSearchPageHeading);
+            Assert.AreEqual("No products were found matching your selection.", actualSearchResult);
         }
     }
 }

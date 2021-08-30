@@ -52,26 +52,23 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
         [Test]
         public void CorrectProductShownOnSearchResultsPage_WhenUsingSearchForExistingProduct()
         {
-            string rocketName = "Falcon 9";            
+            string searchName = "Falcon 9";            
 
-            _mainPage.Open();
-            SearchSection.
-            _mainPage.AddRocketToShoppingCart(rocketName);
-            _mainPage.ViewShoppingCartFieldHover();
+            _mainPage.Open();           
+            _mainPage.SearchSection.SearchForItem(searchName);            
 
-            _mainPage.AssertCorrectSubtotalOnViewYourShoppingCart(expectedSubtotalPrice);
+            SearchSection.AssertCorrectSearchResult(searchName);
         }
 
         [Test]
         public void NoProductMessageOnSearchResultsPage_WhenUsingSearchForNonExistingProduct()
         {
-            string searchName = "Falco 10";            
+            string searchName = "Falco 10";
 
             _mainPage.Open();
-            _mainPage.AddRocketToShoppingCart(rocketName);
-            _mainPage.ViewShoppingCartFieldHover();
+            _mainPage.SearchSection.SearchForItem(searchName);
 
-            _mainPage.AssertCorrectSubtotalOnViewYourShoppingCart(expectedSubtotalPrice);
+            SearchSection.AssertWrongSearchResult();
         }
 
         [Test]

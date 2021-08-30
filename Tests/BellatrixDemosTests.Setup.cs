@@ -17,6 +17,7 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
         private MainPage _mainPage;
         private CartPage _cartPage;
         private CheckoutPage _checkoutPage;
+        private SearchSection SearchSection;
         private Facade _facade;        
 
         [SetUp]
