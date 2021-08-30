@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 {
-    
+
     public class HelperMethods : BasePage
     {
         private IWebElement _webElement;
@@ -33,7 +33,7 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
         }
 
         public void WaitToExists(By by)
-        {            
+        {
             _webDriverWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(by));
         }
 
@@ -61,9 +61,11 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
         }
 
 
-        public string GetAttribute(string attributeName)
+        public void EnterText(string text, IWebElement element)
         {
-            return _webElement?.GetAttribute(attributeName);
+            Thread.Sleep(500);
+            element.Clear();
+            element.SendKeys(text);
         }
 
         public static string GenerateNewRandomEmailOrPassword()

@@ -9,6 +9,8 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 {
     public partial class BellatrixDemosTests
     {
+        //// BUG: Cannot remove item from cart through "View yor shopping cart"
+        
         //MainPageTests
         [Test]
         public void OpenCorrectRocketInfoPage()
@@ -38,6 +40,32 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
         {
             string rocketName = "Falcon 9";
             string expectedSubtotalPrice = "50.00€";
+
+            _mainPage.Open();
+            _mainPage.AddRocketToShoppingCart(rocketName);
+            _mainPage.ViewShoppingCartFieldHover();
+
+            _mainPage.AssertCorrectSubtotalOnViewYourShoppingCart(expectedSubtotalPrice);
+        }
+
+        // Search tests
+        [Test]
+        public void CorrectProductShownOnSearchResultsPage_WhenUsingSearchForExistingProduct()
+        {
+            string rocketName = "Falcon 9";            
+
+            _mainPage.Open();
+            SearchSection.
+            _mainPage.AddRocketToShoppingCart(rocketName);
+            _mainPage.ViewShoppingCartFieldHover();
+
+            _mainPage.AssertCorrectSubtotalOnViewYourShoppingCart(expectedSubtotalPrice);
+        }
+
+        [Test]
+        public void NoProductMessageOnSearchResultsPage_WhenUsingSearchForNonExistingProduct()
+        {
+            string searchName = "Falco 10";            
 
             _mainPage.Open();
             _mainPage.AddRocketToShoppingCart(rocketName);
