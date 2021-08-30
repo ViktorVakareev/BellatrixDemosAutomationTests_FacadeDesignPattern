@@ -55,9 +55,9 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
             string searchName = "Falcon 9";            
 
             _mainPage.Open();           
-            _mainPage.SearchSection.SearchForItem(searchName);            
+            _searchSection.SearchForItem(searchName);            
 
-            SearchSection.AssertCorrectSearchResult(searchName);
+            _searchSection.AssertCorrectSearchResult(searchName);
         }
 
         [Test]
@@ -66,9 +66,9 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
             string searchName = "Falco 10";
 
             _mainPage.Open();
-            _mainPage.SearchSection.SearchForItem(searchName);
+            _searchSection.SearchForItem(searchName);
 
-            SearchSection.AssertWrongSearchResult();
+            _searchSection.AssertWrongSearchResult();
         }
 
         [Test]

@@ -17,7 +17,7 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
         private MainPage _mainPage;
         private CartPage _cartPage;
         private CheckoutPage _checkoutPage;
-        private SearchSection SearchSection;
+        private SearchSection _searchSection;
         private Facade _facade;        
 
         [SetUp]
@@ -31,6 +31,7 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
             _mainPage = new MainPage(_driver);
             _cartPage = new CartPage(_driver);
             _checkoutPage = new CheckoutPage(_driver);
+            _searchSection = new SearchSection(_driver);
             _facade = new Facade(_mainPage, _cartPage, _checkoutPage);
         }
 
