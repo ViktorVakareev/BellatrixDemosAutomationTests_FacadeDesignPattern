@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenQA.Selenium;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 {
     public partial class MainPage : BasePage
     {
-        public MainPage(Driver driver) 
+        public MainPage(IWebDriver driver) 
             : base(driver)
         {
         }
@@ -17,17 +18,15 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 
         public void AddRocketToShoppingCart(string rocketName)
         {
-            Open();
             AddToCartByName(rocketName).Click();
-            _driver.WaitForAjax();
+            //_driver.WaitForAjax(); // TODO helper method WaitForAjax()
             ViewCartButton.Click();
         }
 
         public void OpenRocketInfoPage(string rocketName)
-        {
-            Open();
+        {            
             ProductBoxByName(rocketName).Click();
-            _driver.WaitForAjax();            
+           // _driver.WaitForAjax();            
         }
 
         protected override void WaitForPageLoad()
