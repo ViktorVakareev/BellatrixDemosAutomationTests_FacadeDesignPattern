@@ -9,18 +9,18 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 {
     public class SearchSection
     {
-        private readonly Driver _driver;
+        private readonly IWebDriver _driver;
 
-        public SearchSection(Driver driver)
+        public SearchSection(IWebDriver driver)
         {
             _driver = driver;
         }
 
-        private Element SearchField => _driver.FindElement(By.Id("woocommerce-product-search-field-0"));
+        private IWebElement SearchField => _driver.FindElement(By.Id("woocommerce-product-search-field-0"));
 
         public void SearchForItem(string searchText)
         {
-            SearchField.TypeText(searchText);
+            // SearchField.TypeText(searchText);  //TODO HelperMethod TypeText
         }
     }
 }

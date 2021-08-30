@@ -9,13 +9,14 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 {
     public class BreadcrumbSection
     {
-        private readonly Driver _driver;
+        private readonly IWebDriver _driver;
 
-        public BreadcrumbSection(Driver driver)
+        public BreadcrumbSection(IWebDriver driver)
         {
             _driver = driver;
         }
-        private Element Breadcrumb => _driver.FindElement(By.ClassName("woocommerce-breadcrumb"));
+
+        private IWebElement Breadcrumb => _driver.FindElement(By.ClassName("woocommerce-breadcrumb"));
 
         public void OpenBreadcrumbItem(string itemToOpen)
         {

@@ -18,7 +18,7 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
         public void AddRocketToShoppingCart(string rocketName)
         {
             Open();
-            GetProductBoxByName(rocketName).Click();
+            AddToCartByName(rocketName).Click();
             _driver.WaitForAjax();
             ViewCartButton.Click();
         }
@@ -26,9 +26,8 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
         public void OpenRocketInfoPage(string rocketName)
         {
             Open();
-            GetProductBoxByName(rocketName).Click();
-            _driver.WaitForAjax();
-            ViewCartButton.Click();
+            ProductBoxByName(rocketName).Click();
+            _driver.WaitForAjax();            
         }
 
         protected override void WaitForPageLoad()

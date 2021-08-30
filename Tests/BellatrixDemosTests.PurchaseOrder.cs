@@ -10,6 +10,15 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
     public partial class BellatrixDemosTests
     {
         [Test]
+        public void OpenFalcon9InfoPageWithoutFacade()
+        {
+            _mainPage.Open();
+            _mainPage.OpenRocketInfoPage("Falcon 9");
+
+            _mainPage.AssertCorrectRocketInfoPageOpened("Falcon 9");
+        }
+
+            [Test]
         public void PurchaseFalcon9WithoutFacade()
         {
             _mainPage.Open();

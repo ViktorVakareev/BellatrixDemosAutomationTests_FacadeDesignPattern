@@ -9,15 +9,15 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 {
     public class CartInfoSection
     {
-        private readonly Driver _driver;
+        private readonly IWebDriver _driver;
 
-        public CartInfoSection(Driver driver)
+        public CartInfoSection(IWebDriver driver)
         {
             _driver = driver;
         }
 
-        private Element CartIcon => _driver.FindElement(By.ClassName("cart-contents"));
-        private Element CartAmount => _driver.FindElement(By.ClassName("amount"));
+        private IWebElement CartIcon => _driver.FindElement(By.ClassName("cart-contents"));
+        private IWebElement CartAmount => _driver.FindElement(By.ClassName("amount"));
 
         public string GetCurrentAmount()
         {

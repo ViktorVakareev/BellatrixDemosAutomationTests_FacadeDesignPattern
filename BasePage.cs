@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenQA.Selenium;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,9 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 {
     public abstract class BasePage
     {
-        protected readonly Driver _driver;
+        protected readonly IWebDriver _driver;
 
-        protected BasePage(Driver driver)
+        protected BasePage(IWebDriver driver)
         {
            _driver = driver;
             SearchSection = new SearchSection(driver);
@@ -25,7 +26,7 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 
         public void Open()
         {
-           _driver.GoToUrl(Url);
+           _driver.Navigate().GoToUrl(Url);
             WaitForPageLoad();
         }
 

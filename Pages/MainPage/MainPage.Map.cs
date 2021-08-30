@@ -9,18 +9,21 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 {
     public partial class MainPage
     {
-        public Element ViewCartButton => _driver.FindElement(By.XPath(""));
+        public Element ViewCartButton => _driver.FindElement(By.XPath(""));        
 
-        public Element AddToCartFalcon9 => _driver.FindElement(By.XPath(""));
-
-        public Element GetAddToCartByName(string name)
+        public Element AddToCartByName(string name)
         {
             return _driver.FindElement(By.XPath($"//h2[contains(text(),'{name}')]/following::a[1]"));
         }
 
-        public Element GetProductBoxByName(string name)
+        public Element ProductBoxByName(string name)
         {
             return _driver.FindElement(By.XPath($"//h2[contains(text(),'{name}')]"));
+        }
+
+        public Element ProductInfoPageByName(string name)
+        {
+            return _driver.FindElement(By.XPath($"//h1[contains(text(),'{name}')]"));
         }
 
     }
