@@ -1,15 +1,67 @@
-﻿using System;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 {
-    public class HelperMethods
-    {        protected void WaitForPageLoad()
+    
+    public class HelperMethods : BasePage
+    {
+        private IWebElement _webElement;
+        private WebDriverWait _webDriverWait;
+
+        protected override string Url => "https://demos.bellatrix.solutions/";
+
+        public HelperMethods(IWebDriver driver) : base(driver)
         {
-            //TODO
+            _webDriverWait = new WebDriverWait(_driver, TimeSpan.FromSeconds(30));
+        }
+
+        public void TypeText(string text)
+        {
+            Thread.Sleep(500);
+            _webElement?.Clear();
+            _webElement?.SendKeys(text);
+        }
+
+        public void WaitToExists(By by)
+        {            
+            _webDriverWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(by));
+        }
+
+        private void WaitToBeClickable(By by)
+        {
+            var webDriverWait = new WebDriverWait(_driver, TimeSpan.FromSeconds(30));
+            webDriverWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(by));
+        }
+
+        public void WaitForAjax()
+        {
+            var js = (IJavaScriptExecutor)_driver;
+            _webDriverWait.Until(wd => js.ExecuteScript("return jQuery.active").ToString() == "0");
+        }
+
+        public override void WaitForPageLoad()
+        {
+            var js = (IJavaScriptExecutor)_driver;
+            _webDriverWait.Until(wd => js.ExecuteScript("return document.readyState").ToString() == "complete");
+        }
+
+
+        public string GetAttribute(string attributeName)
+        {
+            return _webElement?.GetAttribute(attributeName);
+        }
+
+        public static string GenerateNewRandomEmailOrPassword()
+        {
+            var rnd = new Random();
+            return $"vic{rnd.Next(555, 55555)}@gmail.com";
         }
     }
 }

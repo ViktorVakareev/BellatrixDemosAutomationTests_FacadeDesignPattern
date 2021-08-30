@@ -20,7 +20,7 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 
         public void SearchForItem(string searchText)
         {
-            // SearchField.TypeText(searchText);  //TODO HelperMethod TypeText
+            // SearchField.TypeText(searchText);  
         }
     }
 }

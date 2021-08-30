@@ -30,7 +30,7 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
             WaitForPageLoad();
         }
 
-        protected abstract void WaitForPageLoad();
+        public abstract void WaitForPageLoad();
     }
 }
 

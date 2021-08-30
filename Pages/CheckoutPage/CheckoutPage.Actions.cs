@@ -14,7 +14,7 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
         }
         protected override string Url => "https://demos.bellatrix.solutions/checkout/";
 
-        protected override void WaitForPageLoad()
+        public override void WaitForPageLoad()
         {
             //TODO
         }

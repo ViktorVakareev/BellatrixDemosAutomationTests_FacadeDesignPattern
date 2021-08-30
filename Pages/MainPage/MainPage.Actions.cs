@@ -19,7 +19,7 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
         public void AddRocketToShoppingCart(string rocketName)
         {
             AddToCartByName(rocketName).Click();
-            //_driver.WaitForAjax(); // TODO helper method WaitForAjax()
+            //_driver.WaitForAjax(); 
             ViewCartButton.Click();
         }
 
@@ -29,7 +29,7 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
            // _driver.WaitForAjax();            
         }
 
-        protected override void WaitForPageLoad()
+        public override void WaitForPageLoad()
         {
             //TODO
         }
