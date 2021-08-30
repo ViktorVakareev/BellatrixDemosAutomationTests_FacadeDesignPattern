@@ -9,7 +9,7 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 {
     public partial class BellatrixDemosTests
     {
-        //// BUG: Cannot remove item from cart through "View yor shopping cart"
+        //// BUG: Cannot remove item from cart through "View yor shopping cart", when in Home Page and only one product in Cart
         
         //MainPageTests
         [Test]
@@ -47,6 +47,9 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 
             _mainPage.AssertCorrectSubtotalOnViewYourShoppingCart(expectedSubtotalPrice);
         }
+
+        // CartPage Tests
+
 
         // Search tests
         [Test]
