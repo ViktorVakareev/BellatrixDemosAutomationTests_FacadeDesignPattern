@@ -9,9 +9,12 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 {
     public partial class MainPage : BasePage
     {
+        private HelperMethods _helperMethods;
+
         public MainPage(IWebDriver driver) 
             : base(driver)
         {
+            _helperMethods = new HelperMethods(driver);
         }
 
         protected override string Url => "https://demos.bellatrix.solutions/";
@@ -19,8 +22,18 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
         public void AddRocketToShoppingCart(string rocketName)
         {
             AddToCartByName(rocketName).Click();
-            //_driver.WaitForAjax(); 
+            //_driver.WaitForAjax();             
+        }
+
+        public void ViewShoppingCart(string rocketName)
+        {
             ViewCartButton.Click();
+            //_driver.WaitForAjax();             
+        }
+
+        public void ViewShoppingCartFieldHover()
+        {
+           _helperMethods.HoverOverElement(ViewYourShoppingCartField);           
         }
 
         public void OpenRocketInfoPage(string rocketName)
@@ -31,7 +44,7 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 
         public override void WaitForPageLoad()
         {
-            //TODO
+            _helperMethods.WaitForPageLoad();
         }
     }
 }

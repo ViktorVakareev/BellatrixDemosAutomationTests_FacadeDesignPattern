@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
@@ -14,12 +15,14 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
     {
         private IWebElement _webElement;
         private WebDriverWait _webDriverWait;
+        private Actions _actions;
 
         protected override string Url => "https://demos.bellatrix.solutions/";
 
         public HelperMethods(IWebDriver driver) : base(driver)
         {
-            _webDriverWait = new WebDriverWait(_driver, TimeSpan.FromSeconds(30));
+            _webDriverWait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
+            _actions = new Actions(driver);
         }
 
         public void TypeText(string text)
@@ -32,6 +35,11 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
         public void WaitToExists(By by)
         {            
             _webDriverWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(by));
+        }
+
+        public void HoverOverElement(IWebElement element)
+        {
+            _actions.MoveToElement(element).Perform();
         }
 
         private void WaitToBeClickable(By by)

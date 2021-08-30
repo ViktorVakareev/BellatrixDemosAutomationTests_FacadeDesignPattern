@@ -13,5 +13,11 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
             string actualRocketName = ProductInfoPageByName(expectedRocketName).Text;
             Assert.AreEqual(actualRocketName,expectedRocketName);
         }
+
+        public void AssertCorrectSubtotalOnViewYourShoppingCart(string expectedSubtotalPrice)
+        {
+            string actualSubtotalPrice = SubtotalViewShoppingCartField.Text;
+            Assert.AreEqual(actualSubtotalPrice, expectedSubtotalPrice);
+        }
     }
 }

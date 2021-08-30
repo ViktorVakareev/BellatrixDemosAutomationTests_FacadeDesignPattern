@@ -9,16 +9,44 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 {
     public partial class BellatrixDemosTests
     {
+        //MainPageTests
         [Test]
-        public void OpenFalcon9InfoPageWithoutFacade()
+        public void OpenCorrectRocketInfoPage()
         {
-            _mainPage.Open();
-            _mainPage.OpenRocketInfoPage("Falcon 9");
+            string rocketName = "Falcon 9";
 
-            _mainPage.AssertCorrectRocketInfoPageOpened("Falcon 9");
+            _mainPage.Open();
+            _mainPage.OpenRocketInfoPage(rocketName);
+
+            _mainPage.AssertCorrectRocketInfoPageOpened(rocketName);
         }
 
-            [Test]
+        [Test]
+        public void AddCorrectRocketToCart()
+        {
+            string rocketName = "Proton Rocket";
+
+            _mainPage.Open();
+            _mainPage.AddRocketToShoppingCart(rocketName);
+            _mainPage.ViewShoppingCart(rocketName);
+
+            _cartPage.AssertCorrectRocketAddedToCart(rocketName);
+        }
+
+        [Test]
+        public void CorrectSubtotalPrice_WhenOnViewYourShoppingCart()
+        {
+            string rocketName = "Falcon 9";
+            string expectedSubtotalPrice = "50.00€";
+
+            _mainPage.Open();
+            _mainPage.AddRocketToShoppingCart(rocketName);
+            _mainPage.ViewShoppingCartFieldHover();
+
+            _mainPage.AssertCorrectSubtotalOnViewYourShoppingCart(expectedSubtotalPrice);
+        }
+
+        [Test]
         public void PurchaseFalcon9WithoutFacade()
         {
             _mainPage.Open();
