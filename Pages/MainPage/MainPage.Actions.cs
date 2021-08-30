@@ -20,7 +20,15 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
             Open();
             GetProductBoxByName(rocketName).Click();
             _driver.WaitForAjax();
-            Elements.ViewCartButton.Click();
+            ViewCartButton.Click();
+        }
+
+        public void OpenRocketInfoPage(string rocketName)
+        {
+            Open();
+            GetProductBoxByName(rocketName).Click();
+            _driver.WaitForAjax();
+            ViewCartButton.Click();
         }
 
         protected override void WaitForPageLoad()
