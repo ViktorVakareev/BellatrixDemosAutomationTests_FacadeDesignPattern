@@ -201,6 +201,23 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
         }
 
         // CheckoutPage Test Cases
+
+        [Test]
+        public void PlaceOrderWithEmptyBillingDetails_WhenOnCheckoutPage()
+        {
+            string rocket1 = "Falcon 9";
+            string couponCode = "happybirthday";
+
+            _mainPage.Open();
+            _mainPage.AddRocketToShoppingCart(rocket1);
+            _mainPage.ClickViewShoppingCartIcon();
+            _cartPage.ApplyCouponCode(couponCode);
+            _cartPage.ClickProceedToCheckout();
+            _checkoutPage.ClickPlaceOrder();
+
+            _checkoutPage.AssertRequiredFieldsErrorMessage();
+        }
+
         [Test]
         public void PurchaseFalcon9WithoutFacade()
         {

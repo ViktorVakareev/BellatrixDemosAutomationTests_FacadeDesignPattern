@@ -27,9 +27,15 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
             _helperMethods.WaitToBeClickable(UpdateCartButtonLocator);
             UpdateCartButton.Click();
             _helperMethods.WaitForAjax();
-        }                
+        }
 
-            public void RemoveItemByName(string rocketToRemove)
+        public void ClickProceedToCheckout()
+        {    
+            // add hover action
+            ProceedToCheckoutLink.Click();            
+        }
+
+        public void RemoveItemByName(string rocketToRemove)
         {
             RemoveItemButtonByName(rocketToRemove).Click();
             _helperMethods.WaitToExist(CartPageTextMessageFieldLocator);

@@ -9,14 +9,23 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 {
     public partial class CheckoutPage : BasePage
     {
+        HelperMethods _helperMethods;
+
         public CheckoutPage(IWebDriver driver) : base(driver)
         {
+            _helperMethods = new HelperMethods(driver);
         }
+
         protected override string Url => "https://demos.bellatrix.solutions/checkout/";
 
         public override void WaitForPageLoad()
         {
-            //TODO
+            _helperMethods.WaitForPageLoad();
+        }
+
+        public void ClickPlaceOrder()
+        {
+            PlaceOrderButton.Click();
         }
     }
 }
