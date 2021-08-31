@@ -40,8 +40,7 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 
         public void ClickViewShoppingCartIcon()
         {
-            _helperMethods.HoverOverElement(ViewYourShoppingCartIcon);
-            _helperMethods.WaitToExist(SubtotalViewShoppingCartFieldLocator);
+            _helperMethods.HoverOverElement(ViewYourShoppingCartIcon);            
             ViewYourShoppingCartIcon.Click();
         }
 
