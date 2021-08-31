@@ -32,7 +32,7 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
             _webElement?.SendKeys(text);
         }
 
-        public void WaitToExists(By by)
+        public void WaitToExist(By by)
         {
             _webDriverWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(by));
         }

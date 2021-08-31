@@ -45,6 +45,27 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
             Assert.AreEqual(expectedTotal, actualTotalPrice);
         }
 
+        public void AssertWrongCouponCodeMessage(string couponCode)
+        {
+            string expectedMessage = $"Coupon \"{couponCode}\" does not exist!";
+
+            Assert.AreEqual(expectedMessage, CartPageErrorMessageField.Text);
+        }
+
+        public void AssertEmptyCouponCodeMessage()
+        {
+            string expectedMessage = "Please enter a coupon code.";
+
+            Assert.AreEqual(expectedMessage, CartPageErrorMessageField.Text);
+        }
+        
+        public void AssertValidCouponCodeMessage()
+        {
+            string expectedMessage = "Coupon code applied successfully.";
+
+            Assert.AreEqual(expectedMessage, CartPageTextMessageField.Text);
+        }
+
         private double CalculateTotalPrice()
         {
             return Double.Parse(SubtotalPriceTextField.Text.Replace("€", "").Replace(",", ""))

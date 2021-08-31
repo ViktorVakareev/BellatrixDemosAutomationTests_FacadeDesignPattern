@@ -146,41 +146,43 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
         [Test]
         public void ApplyValidCoupon_WhenInCartPage()
         {
-            string rocket1 = "Falcon 9";            
+            string rocket1 = "Falcon 9";
+            string couponCode = "happybirthday";
 
-            //_mainPage.Open();
-            //_mainPage.AddRocketToShoppingCart(rocket1);
-            //_mainMenuSection.OpenHomePage();
-            //_mainPage.AddRocketToShoppingCart(rocket2);
-            //_mainMenuSection.OpenHomePage();
-            //_mainPage.AddRocketToShoppingCart(rocket3);
-            //_mainPage.ClickViewShoppingCartIcon();
-            //_cartPage.IncreaseQuantityByName(rocket1, 2);
-            //_cartPage.IncreaseQuantityByName(rocket2, 2);
-            //_cartPage.IncreaseQuantityByName(rocket3, 2);
-            //_cartPage.ClickUpdateCartButton();
+            _mainPage.Open();
+            _mainPage.AddRocketToShoppingCart(rocket1);
+            _mainPage.ClickViewShoppingCartIcon();
+            _cartPage.ApplyCouponCode(couponCode);
 
-            _cartPage.AssertIncreasingQuantityAndUpdateCartButtonWorking(9000360.00);
+            _cartPage.AssertValidCouponCodeMessage();
         }
 
         [Test]
-        public void ApplyInvalidCoupon_WhenInCartPage()
+        public void ApplyInvalidCouponWithWrongCode_WhenInCartPage()
         {
-            string rocket1 = "Falcon 9";            
+            string rocket1 = "Falcon 9";
+            string couponCode = "discount";
 
-            //_mainPage.Open();
-            //_mainPage.AddRocketToShoppingCart(rocket1);
-            //_mainMenuSection.OpenHomePage();
-            //_mainPage.AddRocketToShoppingCart(rocket2);
-            //_mainMenuSection.OpenHomePage();
-            //_mainPage.AddRocketToShoppingCart(rocket3);
-            //_mainPage.ClickViewShoppingCartIcon();
-            //_cartPage.IncreaseQuantityByName(rocket1, 2);
-            //_cartPage.IncreaseQuantityByName(rocket2, 2);
-            //_cartPage.IncreaseQuantityByName(rocket3, 2);
-            //_cartPage.ClickUpdateCartButton();
+            _mainPage.Open();
+            _mainPage.AddRocketToShoppingCart(rocket1);            
+            _mainPage.ClickViewShoppingCartIcon();            
+            _cartPage.ApplyCouponCode(couponCode);           
 
-            _cartPage.AssertIncreasingQuantityAndUpdateCartButtonWorking(9000360.00);
+            _cartPage.AssertWrongCouponCodeMessage(couponCode);
+        }
+
+        [Test]
+        public void ApplyEmptyCouponCode_WhenInCartPage()
+        {
+            string rocket1 = "Falcon 9";
+            string couponCode = String.Empty;
+
+            _mainPage.Open();
+            _mainPage.AddRocketToShoppingCart(rocket1);
+            _mainPage.ClickViewShoppingCartIcon();
+            _cartPage.ApplyCouponCode(couponCode);
+
+            _cartPage.AssertEmptyCouponCodeMessage();
         }
 
         [Test]

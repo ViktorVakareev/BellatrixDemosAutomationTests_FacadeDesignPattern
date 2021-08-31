@@ -27,12 +27,12 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
             _helperMethods.WaitToBeClickable(UpdateCartButtonLocator);
             UpdateCartButton.Click();
             _helperMethods.WaitForAjax();
-        } 
-        
-        public void RemoveItemByName(string rocketToRemove)
+        }                
+
+            public void RemoveItemByName(string rocketToRemove)
         {
             RemoveItemButtonByName(rocketToRemove).Click();
-            _helperMethods.WaitToExists(CartPageTextMessageFieldLocator);
+            _helperMethods.WaitToExist(CartPageTextMessageFieldLocator);
         }
 
         public void IncreaseQuantityByName(string rocketName, int quantity)
@@ -40,6 +40,13 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
             string quantityText = quantity.ToString();
             _helperMethods.EnterText(quantityText, QuantityByNameField(rocketName));
             _helperMethods.WaitForAjax();
+        }
+
+        public void ApplyCouponCode(string couponText)
+        {            
+            _helperMethods.EnterText(couponText, CouponTextField);
+            ApplyCouponButton.Click();
+            _helperMethods.WaitToExist(CartPageErrorMessageFieldLocator);
         }
     }
 }
