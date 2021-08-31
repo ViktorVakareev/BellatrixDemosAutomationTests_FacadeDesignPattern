@@ -21,5 +21,21 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
         {
             _helperMethods.WaitForPageLoad();
         }
+
+        public void ClickUpdateCartButton()
+        {
+            UpdateCartButton.Click();
+        } 
+        
+        public void RemoveItemByName(string rocketToRemove)
+        {
+            RemoveItemButtonByName(rocketToRemove).Click();
+        }
+
+        public void IncreaseQuantityByName(string rocketName, int quantity)
+        {
+            string quantityText = quantity.ToString();
+            _helperMethods.EnterText(quantityText, QuantityByNameField(rocketName));
+        }
     }
 }

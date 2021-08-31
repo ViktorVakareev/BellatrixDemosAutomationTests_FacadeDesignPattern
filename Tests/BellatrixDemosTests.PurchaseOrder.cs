@@ -90,9 +90,51 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
             _mainPage.AddRocketToShoppingCart(rocket3);
             _mainPage.ClickViewShoppingCartIcon();
 
-            _cartPage.AssertCorrectTotalPriceOnCartPage();
+            _cartPage.AssertCorrectTotalPriceOnCartPage(4500180.00);
         }
 
+        [Test]
+        public void RemoveProductFromCartPage()
+        {
+            string rocket1 = "Falcon 9";
+            string rocket2 = "Saturn V";
+            string rocket3 = "Proton Rocket";
+
+            _mainPage.Open();
+            _mainPage.AddRocketToShoppingCart(rocket1);
+            _mainMenuSection.OpenHomePage();
+            _mainPage.AddRocketToShoppingCart(rocket2);
+            _mainMenuSection.OpenHomePage();
+            _mainPage.AddRocketToShoppingCart(rocket3);
+            _mainPage.ClickViewShoppingCartIcon();
+            _cartPage.RemoveItemByName(rocket3);            
+
+            _cartPage.AssertRemovingCorrectProduct(rocket3, 180.00);
+        }
+
+        [Test]
+        public void UpdateCartButtonWorking_WhenIncreasingQuantityFromCart()
+        {
+            string rocket1 = "Falcon 9";
+            string rocket2 = "Saturn V";
+            string rocket3 = "Proton Rocket";
+
+            _mainPage.Open();
+            _mainPage.AddRocketToShoppingCart(rocket1);
+            _mainMenuSection.OpenHomePage();
+            _mainPage.AddRocketToShoppingCart(rocket2);
+            _mainMenuSection.OpenHomePage();
+            _mainPage.AddRocketToShoppingCart(rocket3);
+            _mainPage.ClickViewShoppingCartIcon();
+            _cartPage.IncreaseQuantityByName(rocket1, 2);
+            _cartPage.IncreaseQuantityByName(rocket2, 2);
+            _cartPage.IncreaseQuantityByName(rocket3, 2);
+            _cartPage.ClickUpdateCartButton();
+
+            _cartPage.AssertIncreasingQuantityAndUpdateCartButtonWorking(9000360.00);
+        }
+
+        //Add coupon cases
         [Test]
         public void PurchaseFalcon9WithoutFacade()
         {

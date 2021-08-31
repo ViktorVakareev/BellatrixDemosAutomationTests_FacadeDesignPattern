@@ -11,16 +11,31 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
     {
         public void AssertCorrectRocketAddedToCart(string expectedRocketName)
         {
-            string actualRocketName = ProductNameField.Text;
+            string actualRocketName = ProductNameField(expectedRocketName).Text;
             Assert.AreEqual(expectedRocketName, actualRocketName);
         }
 
-        public void AssertCorrectTotalPriceOnCartPage()
+        public void AssertCorrectTotalPriceOnCartPage(double expectedTotal)
         {
-            double expectedTotalPrice = 4500180.00;
             double actualTotalPrice = CalculateTotalPrice();
 
-            Assert.AreEqual(expectedTotalPrice, actualTotalPrice);
+            Assert.AreEqual(expectedTotal, actualTotalPrice);
+        }
+
+        public void AssertRemovingCorrectProduct(string rocketToRemove, double expectedTotal)
+        {            
+            double actualTotalPrice = CalculateTotalPrice();
+
+            Assert.AreEqual($"“{rocketToRemove}” removed. Undo?",CartPageTextMessageField.Text);
+            Assert.AreEqual(expectedTotal, actualTotalPrice);
+        }
+
+        public void AssertIncreasingQuantityAndUpdateCartButtonWorking(double expectedTotal)
+        {
+            double actualTotalPrice = CalculateTotalPrice();
+
+            Assert.AreEqual("Cart updated.", CartPageTextMessageField.Text);
+            Assert.AreEqual(expectedTotal, actualTotalPrice);
         }
 
         private double CalculateTotalPrice()

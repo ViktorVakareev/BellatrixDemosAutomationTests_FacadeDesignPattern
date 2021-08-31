@@ -57,13 +57,7 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
         {
             var js = (IJavaScriptExecutor)_driver;
             _webDriverWait.Until(wd => js.ExecuteScript("return document.readyState").ToString() == "complete");
-        }
-
-        public override void WaitToBeVisible(IWebElement element)
-        {
-            var webDriverWait = new WebDriverWait(_driver, TimeSpan.FromSeconds(30));
-            webDriverWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.);
-        }
+        }             
 
         public void EnterText(string text, IWebElement element)
         {

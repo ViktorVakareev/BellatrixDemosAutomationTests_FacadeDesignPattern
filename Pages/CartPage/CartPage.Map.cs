@@ -8,9 +8,7 @@ using System.Threading.Tasks;
 namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 {
     public partial class CartPage
-    {
-        public IWebElement ProductNameField => _driver.FindElement(By.XPath("//td[@class='product-name']")); 
-
+    {   
         public IWebElement CouponTextField => _driver.FindElement(By.XPath("//input[@id='coupon_code']"));
 
         public IWebElement ApplyCouponButton => _driver.FindElement(By.XPath("//button[@name='apply_coupon']"));
@@ -26,5 +24,22 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
         public IWebElement VatTextField => _driver.FindElement(By.XPath("//div[@class='wc-proceed-to-checkout']/preceding::bdi[2]"));
 
         public IWebElement SubtotalPriceTextField => _driver.FindElement(By.XPath("//div[@class='wc-proceed-to-checkout']/preceding::bdi[3]"));
+
+        public IWebElement CartPageTextMessageField => _driver.FindElement(By.XPath("//div[@class='woocommerce-message']"));       
+
+        public IWebElement ProductNameField(string rocketName)
+        {
+            return _driver.FindElement(By.XPath($"//td[@class='product-name']/following::a[text()='{rocketName}']"));
+        }
+        
+        public IWebElement QuantityByNameField(string rocketName)
+        {
+           return _driver.FindElement(By.XPath($"//label[text()='{rocketName} quantity']/following::input[1]"));
+        }
+
+        public IWebElement RemoveItemButtonByName(string rocketName)
+        {
+            return _driver.FindElement(By.XPath($"//td[@class='product-name']/following::a[text()='{rocketName}']/preceding::a[@class='remove'][1]"));
+        }
     }
 }

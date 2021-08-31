@@ -9,7 +9,9 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 {
     public partial class MainPage
     {
-        public IWebElement ViewCartButton => _driver.FindElement(By.XPath("//a[@title='View cart']"));  
+        public IWebElement ViewCartButton => _driver.FindElement(By.XPath("//a[@title='View cart']")); 
+        
+        public By ViewCartButtonLocator => By.XPath("//a[@title='View cart']");  
 
         public IWebElement ViewYourShoppingCartIcon => _driver.FindElement(By.XPath("//a[@class='cart-contents']"));  
         
