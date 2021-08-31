@@ -11,8 +11,8 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
     {
         //// BUG: Cannot remove item from cart through "View yor shopping cart", when in Home Page and only one product in Cart
         //// BUG: Cannot add more items to cart from HomePage without reloading it
-        
-        //MainPageTests
+
+        //MainPage Test Cases
         [Test]
         public void OpenCorrectRocketInfoPage()
         {
@@ -50,7 +50,7 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
             _mainPage.AssertCorrectSubtotalOnViewYourShoppingCart(expectedSubtotalPrice);
         }
 
-        // Search tests
+        // SearchSection Test Cases
         [Test]
         public void CorrectProductShownOnSearchResultsPage_WhenUsingSearchForExistingProduct()
         {
@@ -73,7 +73,7 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
             _searchSection.AssertWrongSearchResult();
         }
 
-        // CartPage Tests
+        // CartPage Test Cases
         [Test]
         public void CorrectTotalPrice_WhenAddingThreeDifferentProducts()
         {
@@ -142,7 +142,7 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
             _cartPage.AssertIncreasingQuantityAndUpdateCartButtonWorking(9000360.00);
         }
 
-        //Add coupon cases
+        //Coupon Test Cases
         [Test]
         public void ApplyValidCoupon_WhenInCartPage()
         {
@@ -200,6 +200,7 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
             _cartPage.AssertValidCouponDiscount(couponDiscountValue);
         }
 
+        // CheckoutPage Test Cases
         [Test]
         public void PurchaseFalcon9WithoutFacade()
         {
