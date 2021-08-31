@@ -46,7 +46,14 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
         {            
             _helperMethods.EnterText(couponText, CouponTextField);
             ApplyCouponButton.Click();
-            _helperMethods.WaitToExist(CartPageErrorMessageFieldLocator);
+            if (couponText.Equals("happybirthday"))
+            {
+                _helperMethods.WaitToExist(CartPageTextMessageFieldLocator);
+            }
+            else 
+            {
+                _helperMethods.WaitToExist(CartPageErrorMessageFieldLocator);
+            }            
         }
     }
 }

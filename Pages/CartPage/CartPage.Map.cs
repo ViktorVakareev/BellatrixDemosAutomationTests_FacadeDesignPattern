@@ -27,6 +27,8 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 
         public IWebElement SubtotalPriceTextField => _driver.FindElement(By.XPath("//div[@class='wc-proceed-to-checkout']/preceding::bdi[3]"));
 
+        public IWebElement CouponDiscountTextField => _driver.FindElement(By.XPath("//td[@data-title='Coupon: happybirthday']"));
+
         public IWebElement CartPageTextMessageField => _driver.FindElement(By.XPath("//div[@class='woocommerce-message']"));     
         
         public By CartPageTextMessageFieldLocator => By.XPath("//div[@class='woocommerce-message']");  

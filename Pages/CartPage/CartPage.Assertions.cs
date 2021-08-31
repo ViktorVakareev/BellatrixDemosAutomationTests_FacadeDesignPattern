@@ -66,6 +66,13 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
             Assert.AreEqual(expectedMessage, CartPageTextMessageField.Text);
         }
 
+        public void AssertValidCouponDiscount(string expectedDiscount)
+        {
+            string actualDiscount = CouponDiscountTextField.Text.Substring(1,5);
+
+            Assert.AreEqual(expectedDiscount, actualDiscount);
+        }
+
         private double CalculateTotalPrice()
         {
             return Double.Parse(SubtotalPriceTextField.Text.Replace("€", "").Replace(",", ""))

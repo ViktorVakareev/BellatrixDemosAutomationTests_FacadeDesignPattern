@@ -186,6 +186,21 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
         }
 
         [Test]
+        public void ApplyCorrectCouponAndCheckDiscountValue_WhenInCartPage()
+        {
+            string rocket1 = "Falcon 9";
+            string couponCode = "happybirthday";
+            string couponDiscountValue = "5.00€";
+
+            _mainPage.Open();
+            _mainPage.AddRocketToShoppingCart(rocket1);
+            _mainPage.ClickViewShoppingCartIcon();
+            _cartPage.ApplyCouponCode(couponCode);
+
+            _cartPage.AssertValidCouponDiscount(couponDiscountValue);
+        }
+
+        [Test]
         public void PurchaseFalcon9WithoutFacade()
         {
             _mainPage.Open();
