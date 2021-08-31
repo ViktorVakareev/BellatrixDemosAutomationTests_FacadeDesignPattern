@@ -17,6 +17,8 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 
         public IWebElement UpdateCartButton => _driver.FindElement(By.XPath("//button[@name='update_cart']"));
 
+        public By UpdateCartButtonLocator => By.XPath("//button[@name='update_cart']");
+
         public IWebElement ProceedToCheckoutLink => _driver.FindElement(By.XPath("//a[contains(text(),'checkout')]"));
 
         public IWebElement TotalPriceTextField => _driver.FindElement(By.XPath("//div[@class='wc-proceed-to-checkout']/preceding::bdi[1]"));
@@ -25,11 +27,13 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 
         public IWebElement SubtotalPriceTextField => _driver.FindElement(By.XPath("//div[@class='wc-proceed-to-checkout']/preceding::bdi[3]"));
 
-        public IWebElement CartPageTextMessageField => _driver.FindElement(By.XPath("//div[@class='woocommerce-message']"));       
+        public IWebElement CartPageTextMessageField => _driver.FindElement(By.XPath("//div[@class='woocommerce-message']"));     
+        
+        public By CartPageTextMessageFieldLocator => By.XPath("//div[@class='woocommerce-message']");       
 
         public IWebElement ProductNameField(string rocketName)
         {
-            return _driver.FindElement(By.XPath($"//td[@class='product-name']/following::a[text()='{rocketName}']"));
+            return _driver.FindElement(By.XPath($"//a[text()='{rocketName}']"));
         }
         
         public IWebElement QuantityByNameField(string rocketName)

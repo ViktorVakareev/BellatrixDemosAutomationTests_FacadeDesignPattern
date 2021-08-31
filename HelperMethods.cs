@@ -42,7 +42,7 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
             _actions.MoveToElement(element).Perform();
         }
 
-        private void WaitToBeClickable(By by)
+        public void WaitToBeClickable(By by)
         {            
             _webDriverWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(by));
         }

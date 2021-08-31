@@ -22,10 +22,8 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 
         public void AddRocketToShoppingCart(string rocketName)
         {
-            //_helperMethods.WaitToExists(ProductBoxByName(rocketName));
-            //_helperMethods.WaitForAjax();
             AddToCartByName(rocketName).Click();
-            _helperMethods.WaitToExists(ViewCartButtonLocator);
+            _helperMethods.WaitToExists(ViewCartButtonLocator);            
         }
 
         public void ViewShoppingCart(string rocketName)
@@ -36,7 +34,8 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 
         public void ViewShoppingCartIconHover()
         {
-            _helperMethods.HoverOverElement(ViewYourShoppingCartIcon);           
+            _helperMethods.HoverOverElement(ViewYourShoppingCartIcon);
+            _helperMethods.WaitToExists(SubtotalViewShoppingCartFieldLocator);
         }
 
         public void ClickViewShoppingCartIcon()

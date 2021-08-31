@@ -10,6 +10,7 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
     public partial class BellatrixDemosTests
     {
         //// BUG: Cannot remove item from cart through "View yor shopping cart", when in Home Page and only one product in Cart
+        //// BUG: Cannot add more items to cart from HomePage without reloading it
         
         //MainPageTests
         [Test]
@@ -30,7 +31,7 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 
             _mainPage.Open();
             _mainPage.AddRocketToShoppingCart(rocketName);
-            _mainPage.ViewShoppingCart(rocketName);
+            _mainPage.ClickViewShoppingCartIcon();
 
             _cartPage.AssertCorrectRocketAddedToCart(rocketName);
         }
@@ -43,13 +44,11 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 
             _mainPage.Open();
             _mainPage.AddRocketToShoppingCart(rocketName);
+            _mainMenuSection.OpenHomePage();
             _mainPage.ViewShoppingCartIconHover();
 
             _mainPage.AssertCorrectSubtotalOnViewYourShoppingCart(expectedSubtotalPrice);
         }
-
-        // CartPage Tests
-
 
         // Search tests
         [Test]
