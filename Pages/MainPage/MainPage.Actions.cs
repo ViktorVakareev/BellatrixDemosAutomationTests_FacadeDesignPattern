@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace BellatrixDemosAutomationTests_FacadeDesignPattern
@@ -21,25 +22,31 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 
         public void AddRocketToShoppingCart(string rocketName)
         {
-            AddToCartByName(rocketName).Click();
-            //_driver.WaitForAjax();             
+            //_helperMethods.WaitToExists(ProductBoxByName(rocketName));
+            _helperMethods.WaitForAjax();
+            AddToCartByName(rocketName).Click();                      
         }
 
         public void ViewShoppingCart(string rocketName)
         {
             ViewCartButton.Click();
-            //_driver.WaitForAjax();             
+            _helperMethods.WaitForAjax();
         }
 
-        public void ViewShoppingCartFieldHover()
+        public void ViewShoppingCartIconHover()
         {
-           _helperMethods.HoverOverElement(ViewYourShoppingCartField);           
+            _helperMethods.HoverOverElement(ViewYourShoppingCartIcon);           
+        }
+
+        public void ClickViewShoppingCartIcon()
+        {
+            ViewYourShoppingCartIcon.Click();
         }
 
         public void OpenRocketInfoPage(string rocketName)
         {            
             ProductBoxByName(rocketName).Click();
-           // _driver.WaitForAjax();            
+            _helperMethods.WaitForAjax();
         }
 
         public override void WaitForPageLoad()

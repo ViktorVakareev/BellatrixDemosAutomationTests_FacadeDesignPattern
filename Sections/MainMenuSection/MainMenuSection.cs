@@ -10,10 +10,12 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
     public class MainMenuSection
     {
         private readonly IWebDriver _driver;
+        private HelperMethods _helperMethods;
 
         public MainMenuSection(IWebDriver driver)
         {
             _driver = driver;
+            _helperMethods = new HelperMethods(driver);
         }
 
         private IWebElement HomeLink => _driver.FindElement(By.LinkText("Home"));
@@ -26,6 +28,7 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
         public void OpenHomePage()
         {
             HomeLink.Click();
+            _helperMethods.WaitForPageLoad();
         }
 
         public void OpenBlogPage()

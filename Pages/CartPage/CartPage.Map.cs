@@ -21,6 +21,10 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 
         public IWebElement ProceedToCheckoutLink => _driver.FindElement(By.XPath("//a[contains(text(),'checkout')]"));
 
-        public IWebElement TotalPriceTextFieldBeforeCheckout => _driver.FindElement(By.XPath("//div[@class='wc-proceed-to-checkout']/preceding::bdi[1]"));
+        public IWebElement TotalPriceTextField => _driver.FindElement(By.XPath("//div[@class='wc-proceed-to-checkout']/preceding::bdi[1]"));
+
+        public IWebElement VatTextField => _driver.FindElement(By.XPath("//div[@class='wc-proceed-to-checkout']/preceding::bdi[2]"));
+
+        public IWebElement SubtotalPriceTextField => _driver.FindElement(By.XPath("//div[@class='wc-proceed-to-checkout']/preceding::bdi[3]"));
     }
 }

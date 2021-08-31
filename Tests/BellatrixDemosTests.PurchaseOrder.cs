@@ -43,7 +43,7 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 
             _mainPage.Open();
             _mainPage.AddRocketToShoppingCart(rocketName);
-            _mainPage.ViewShoppingCartFieldHover();
+            _mainPage.ViewShoppingCartIconHover();
 
             _mainPage.AssertCorrectSubtotalOnViewYourShoppingCart(expectedSubtotalPrice);
         }
@@ -72,6 +72,25 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
             _searchSection.SearchForItem(searchName);
 
             _searchSection.AssertWrongSearchResult();
+        }
+
+        // CartPage Tests
+        [Test]
+        public void CorrectTotalPrice_WhenAddingThreeDifferentProducts()
+        {
+            string rocket1 = "Falcon 9";
+            string rocket2 = "Saturn V";
+            string rocket3 = "Proton Rocket";
+
+            _mainPage.Open();
+            _mainPage.AddRocketToShoppingCart(rocket1);
+            _mainMenuSection.OpenHomePage();
+            _mainPage.AddRocketToShoppingCart(rocket2);
+            _mainMenuSection.OpenHomePage();
+            _mainPage.AddRocketToShoppingCart(rocket3);
+            _mainPage.ClickViewShoppingCartIcon();
+
+            _cartPage.AssertCorrectTotalPriceOnCartPage();
         }
 
         [Test]

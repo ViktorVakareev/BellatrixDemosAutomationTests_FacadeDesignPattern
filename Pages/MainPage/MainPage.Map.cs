@@ -11,7 +11,7 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
     {
         public IWebElement ViewCartButton => _driver.FindElement(By.XPath("//a[@title='View cart']"));  
 
-        public IWebElement ViewYourShoppingCartField => _driver.FindElement(By.XPath("//a[@class='cart-contents']"));  
+        public IWebElement ViewYourShoppingCartIcon => _driver.FindElement(By.XPath("//a[@class='cart-contents']"));  
         
         public IWebElement SubtotalViewShoppingCartField => _driver.FindElement(By.XPath("//strong[contains(text(),'Subtotal')]/following::bdi[1]"));        
 
