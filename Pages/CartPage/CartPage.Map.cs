@@ -29,7 +29,13 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 
         public IWebElement CartPageTextMessageField => _driver.FindElement(By.XPath("//div[@class='woocommerce-message']"));     
         
-        public By CartPageTextMessageFieldLocator => By.XPath("//div[@class='woocommerce-message']");       
+        public By CartPageTextMessageFieldLocator => By.XPath("//div[@class='woocommerce-message']");  
+
+        public IWebElement CartPageErrorMessageField => _driver.FindElement(By.XPath("//ul[@class='woocommerce-error']/li"));     
+        
+        public By CartPageErrorMessageFieldLocator => By.XPath("//ul[@class='woocommerce-error']/li");
+
+        public IWebElement EmptyCartMessageField => _driver.FindElement(By.XPath("//p[@class='cart-empty woocommerce-info']"));
 
         public IWebElement ProductNameField(string rocketName)
         {

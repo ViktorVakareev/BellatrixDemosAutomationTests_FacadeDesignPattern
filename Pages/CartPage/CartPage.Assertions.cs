@@ -21,6 +21,13 @@ namespace BellatrixDemosAutomationTests_FacadeDesignPattern
 
             Assert.AreEqual(expectedTotal, actualTotalPrice);
         }
+        
+        public void AssertCorrectEmptyCartMessage()
+        {
+            string expectedMessage = "Your cart is currently empty.";
+
+            Assert.AreEqual(expectedMessage, EmptyCartMessageField.Text);
+        }
 
         public void AssertRemovingCorrectProduct(string rocketToRemove, double expectedTotal)
         {            
